@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 
 app = Flask(__name__)
-model = pickle.load(open('model.pkl', 'rb'))
+# model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
@@ -28,6 +28,11 @@ def results():
 
     output = prediction[0]
     return jsonify(output)
+
+@app.route('/upload',methods=['POST'])
+def upload():
+
+    return render_template('upload.php')
 
 if __name__ == "__main__":
     app.run(debug=True)
